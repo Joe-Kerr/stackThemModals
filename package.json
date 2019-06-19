@@ -1,9 +1,8 @@
 {
   "name": "@joe_kerr/stackthemmodals",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Stack them modals.",
   "main": "./dist/stackThemModals.common.js",
-  "browser": "./dist/stackThemModals.browser.js",
   "module": "./src/index.js",
   "author": "joe_kerr / Joe-Kerr",
   "license": "MIT",
