@@ -66,7 +66,7 @@ Notice, just to be clear, you only need to call forcePop if you do not want to w
 
 ## Versions
 
-### 1.0.0 
+### 1.0.1 
 - Public release.
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@joe_kerr/stackthemmodals",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stack them modals.",
   "main": "./dist/stackThemModals.common.js",
   "browser": "./dist/stackThemModals.browser.js",
