@@ -19,7 +19,7 @@ Since this is far from being just a one-liner, it makes sense to provide this as
 
 **1)**
 ```
-npm install @joe_kerr/modalstack
+npm install @joe_kerr/stackthemmodals
 ```
 
 **2)**
