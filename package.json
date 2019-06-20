@@ -1,12 +1,12 @@
 {
   "name": "@joe_kerr/stackthemmodals",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Stack them modals.",
   "main": "./dist/stackThemModals.common.js",
   "module": "./src/index.js",
   "author": "joe_kerr / Joe-Kerr",
   "license": "MIT",
-  "repository": "github:Joe-Kerr/stackThemModals", 
+  "repository": "github:Joe-Kerr/stackThemModals",
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",

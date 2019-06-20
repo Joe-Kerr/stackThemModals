@@ -10,6 +10,11 @@ Since this is far from being just a one-liner, it makes sense to provide this as
 - Knows what modals to close if multiples are opened.
 
 
+## Demo
+
+[See it in action.](https://joe-kerr.github.io/stackThemModals/)
+
+
 ## Requirements
 
 - Web browser
@@ -65,6 +70,9 @@ Notice, just to be clear, you only need to call forcePop if you do not want to w
 
 
 ## Versions
+
+### 1.0.3
+- Added: live demo with github pages
 
 ### 1.0.2
 - - Fixed: ohh, I see now: https://github.com/webpack/webpack/issues/7646

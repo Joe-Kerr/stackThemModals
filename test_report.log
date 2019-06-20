@@ -12,5 +12,5 @@
     √ Clicking outside element A but within element B only destroys modal behaviour for A.
 
 
-  9 passing (161ms)
+  9 passing (100ms)
 

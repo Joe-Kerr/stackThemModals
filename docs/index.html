@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>		
+		<meta charset="UTF-8" />
 		
-		<script src="../dist/stackThemModals.browser.js"></script>
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="pragma" content="no-cache">			
+		
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'" />
+				
+		<script src="./stackThemModals.browser.js"></script>
 		
 		<style>
 		
@@ -54,6 +61,8 @@
 
 <p>Clicking outside "test3" destroys modal behaviour for all three modal elemets.</p>
 <p>Clicking outside "test2" but on or inside "test3" destroys modal behaviour for "test2" and "test1". [etc.]</p>
+
+<button onclick="window.location.reload()">Reset</button>
 
 <script>
 (function() {
