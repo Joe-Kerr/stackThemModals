@@ -3,7 +3,6 @@ const modalStack = [];
 function isClickOnOrInsideModal(modalEl, clickTarget) {
 	let node = clickTarget;
 	while(node != null) {
-		//console.log("comparing parent", modalEl, "to child", node);
 		if(node == modalEl) {
 			return true;
 		}			
@@ -52,16 +51,13 @@ function cleanup() {
 }
 
 function enable(element, callback, config={}) {	
-	if(typeof element === "function") {
-		throw new Error("DEPRECATED: do not enable the modalStack with a getter function to the dom node.");
-	}	
+	const stop = (typeof config.stopPropagation === "boolean") ? config.stopPropagation : true;
 	
-	config.stopPropagation = (typeof config.stopPropagation === "boolean") ? config.stopPropagation : true;
+	modalStack.push({element, callback, stop});
 	
-	modalStack.push({element, callback, stop: config.stopPropagation});
-	
-	if(modalStack.length === 1)
+	if(modalStack.length === 1) {
 		document.addEventListener("mousedown", modalListenerCallback, {capture: true});
+	}
 }
 
 function cancel(stack=false) {
@@ -75,9 +71,6 @@ function cancel(stack=false) {
 		cleanup();
 	}
 }
-
-//export default {enable, cancel};
-
 
 export default {
 	push: enable,
