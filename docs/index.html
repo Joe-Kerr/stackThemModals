@@ -1,73 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>		
-		<meta charset="UTF-8" />
-		
-		<meta http-equiv="cache-control" content="no-cache" />
-		<meta http-equiv="expires" content="0">
-		<meta http-equiv="pragma" content="no-cache">			
-		
-		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'" />
-				
-		<script src="./stackThemModals.browser.js"></script>
-		
-		<style>
-		
-		.hier1 {
-			width: 200px;
-		}
-		
-		ul > li {
-			outline: 1px solid black;
-			min-height: 20px;
-			list-style: none;
-		}
-		
-
-
-		</style>
-	</head>
-
+<head>		
+	<meta charset="UTF-8" />
+	
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="pragma" content="no-cache">			
+	
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'" />
+			
+	<script src="./stackThemModals.browser.js"></script>
+	
+	<style>
+	.test {
+		position:absolute; 
+		width: 120px; 
+		height: 30px; 
+		border: 1px solid black;
+	}
+	
+	.testChild {
+		font-size: 10px;
+		width: 12px; 
+		height: 3px;
+		display: inline;
+		cursor: pointer;
+	}
+	
+	</style>
+</head>
 <body>
 
-<ul class="hier1">
-	<li id="test5">test5</li>
-	<li id="test4">
-		test4
-		<ul class="hier2">
-			<li id="test6">test6</li>
-			<li id="test3">
-				test3
-				<ul class="hier3">
-					<li></li>
-					<li id="test2">
-						test2
-						<ul class="hier4">
-							<li id="test1">test1</li>
-						</ul>
-					</li>
-					<li></li>
-				</ul>				
-			</li>
-			<li></li>
-		</ul>	
-	</li>
-	<li></li>
-</ul>
+<div id="test4" class="test" style="top: -5px; left: -10px;">test4</div>
+<div id="test3" class="test" style="top: 10px; left: 50px;">test3</div>
+<div id="test2" class="test" style="top: 25px; left: 110px;">test2
+	<div id="test2sChild1" class="testChild">Child1</div>
+	<div id="test2sChild2"class ="testChild">Child2</div>
+</div>
+<div id="test1" class="test" style="top: 40px; left: 170px;">test1</div>
+<div id="test0" class="test" style="top: 55px; left: 260px;">test0</div>
 
-<p>
-"test1" is a modal element on top of the modal element "test2" which is a modal element on top of "test3".
-</p>
-
-<p>Clicking outside "test3" destroys modal behaviour for all three modal elemets.</p>
-<p>Clicking outside "test2" but on or inside "test3" destroys modal behaviour for "test2" and "test1". [etc.]</p>
-
-<button onclick="window.location.reload()">Reset</button>
+<section style="top: 200px; left: 50px; position:absolute;">
+	<p>"test1" is a modal element on top of the modal element "test2" which is a modal element on top of "test3".</p>	
+	<p>Differently put, test3 was inserted first and pushed onto the modal stack. Then came test2, then test1.</p>
+	
+	<p>Clicking outside "test3" destroys modal behaviour for all three modal elemets.</p>
+	<p>Clicking outside "test1" but on or inside "test2" destroys modal behaviour for "test1" (etc.).</p>
+	
+	<p>"test4" and "test0" were not made modals and are therefore considered to be outside - even though they look "stacked".</p>
+	
+	<p><i>**A greyed out box means the the modal behvaviour for that element has been turned off</i></p>
+	
+	<button onclick="window.location.reload()">Reset</button>
+</section>
 
 <script>
 (function() {
-	
-	Array.prototype.slice.call(document.getElementsByTagName("li")).forEach((el)=>{el.style.backgroundColor="white";});
+	Array.prototype.slice.call(document.getElementsByTagName("div")).forEach((el)=>{el.style.backgroundColor="white";});
 	
 	let actives = 0;
 	let id = 0;
@@ -80,6 +69,7 @@
 	
 	function enable(_el, ms) {		
 		const el = document.getElementById(_el);
+		console.log("pushing", el.id, "on modal stack");
 		ms.push(el, ()=>{console.log("click outside", el.id); el.style.backgroundColor="grey";});
 		actives++;
 		id++;
@@ -90,9 +80,10 @@
 	}
 	
 	const ms = stackThemModals.default;
-	enable("test1", ms);
+	
+	enable("test3", ms);	
 	enable("test2", ms);
-	enable("test3", ms);
+	enable("test1", ms);
 })()
 </script>
 

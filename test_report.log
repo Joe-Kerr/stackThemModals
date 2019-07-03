@@ -9,8 +9,8 @@
     √ Clicks on the modal element keep the modal behaviour alive.
     √ Clicks on children within the modal element keep the modal behaviour alive.
     √ Clicks outside multiple elements destroy modal behaviour of all of them by default.
-    √ Clicking outside element A but within element B only destroys modal behaviour for A.
+    √ Clicking outside element A (first modal) but within element B (second modal) only destroys modal behaviour for A.
 
 
-  9 passing (100ms)
+  9 passing (120ms)
 

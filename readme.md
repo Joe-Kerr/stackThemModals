@@ -71,6 +71,10 @@ Notice, just to be clear, you only need to call forcePop if you do not want to w
 
 ## Versions
 
+### 1.0.4
+- Fixed: Reversed propagation (issue #1)
+- Changed: Simplified live demo.
+
 ### 1.0.3
 - Added: live demo with github pages
 

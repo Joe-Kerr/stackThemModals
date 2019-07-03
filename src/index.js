@@ -3,6 +3,7 @@ const modalStack = [];
 function isClickOnOrInsideModal(modalEl, clickTarget) {
 	let node = clickTarget;
 	while(node != null) {
+		//console.log({node, modalEl})
 		if(node == modalEl) {
 			return true;
 		}			
@@ -11,22 +12,11 @@ function isClickOnOrInsideModal(modalEl, clickTarget) {
 	return false;
 }
 
-function modalListenerCallback(event, index=-2) {
-	
-	if(index === -2) {
-		index = modalStack.length - 1;
-	}
-	else if(index === -1) {
-		return;
-		throw new Error("Function should have finished at index 0. Got to -1.");
-	}
-	
-	//const index = modalStack.length - 1;
-	
+function modalListenerCallback(event) {
+	const index = modalStack.length - 1;
 	const modalEl =  modalStack[index].element;
 	
 	if(isClickOnOrInsideModal(modalEl, event.target)) {
-		modalListenerCallback(event, index-1);
 		return;		
 	}
 	
@@ -35,15 +25,15 @@ function modalListenerCallback(event, index=-2) {
 	}
 	
 	modalStack[index].callback();
-	//modalStack.pop();
-	modalStack.splice(index,1);
+	modalStack.pop();
 	
 	if(modalStack.length === 0) {
 		cleanup();
 	}
 	else if(index > 0) {
-		modalListenerCallback(event, index-1);
+		modalListenerCallback(event);
 	}
+
 }
 
 function cleanup() {

@@ -11,30 +11,16 @@ const dom = new JSDOM(`
 <html>
 <head></head>
 <body>
-<ul class="hier1">
-	<li id="test5">test5</li>
-	<li id="test4">
-		test4
-		<ul class="hier2">
-			<li id="test6">test6</li>
-			<li id="test3">
-				test3
-				<ul class="hier3">
-					<li></li>
-					<li id="test2">
-						test2
-						<ul class="hier4" id="test1"><li>test1</li></ul>
-					</li>
-					<li></li>
-				</ul>				
-			</li>
-			<li></li>
-		</ul>	
-	</li>
-	<li></li>
-</ul>
-</body></html>
-
+<div id="test4" class="test" style="top: -5px; left: -10px;">test4</div>
+<div id="test3" class="test" style="top: 10px; left: 50px;">test3</div>
+<div id="test2" class="test" style="top: 25px; left: 110px;">test2
+	<div id="test2sChild1"></div>
+	<div id="test2sChild2"></div>
+</div>
+<div id="test1" class="test" style="top: 40px; left: 170px;">test1</div>
+<div id="test0" class="test" style="top: 55px; left: 260px;">test0</div>
+</body>
+</html>
 `);
 
 suite("stackThemModals/index.js");
@@ -163,9 +149,9 @@ test("Clicks on the modal element keep the modal behaviour alive.", ()=>{
 });
 
 test("Clicks on children within the modal element keep the modal behaviour alive.", ()=>{
-	const modal = document.getElementById("test3");
-	const child1 = document.getElementById("test1");
-	const child2 = document.getElementById("test2");
+	const modal = document.getElementById("test2");
+	const child1 = document.getElementById("test2sChild1");
+	const child2 = document.getElementById("test2sChild2");
 	let callCount = 0;
 
 	sample.push(modal, ()=>{ callCount++ });
@@ -184,8 +170,8 @@ test("Clicks on children within the modal element keep the modal behaviour alive
 
 test("Clicks outside multiple elements destroy modal behaviour of all of them by default.", ()=>{
 	const modalA = document.getElementById("test3");
-	const modalB = document.getElementById("test6");
-	const out = document.getElementById("test5");
+	const modalB = document.getElementById("test2");
+	const out = document.getElementById("test4");
 	
 	let callCountA = 0;
 	let callCountB = 0;
@@ -199,16 +185,15 @@ test("Clicks outside multiple elements destroy modal behaviour of all of them by
 	assert.equal(callCountB, 1);	
 });
 
-
-test("Clicking outside element A but within element B only destroys modal behaviour for A.", ()=>{
+test("Clicking outside element A (first modal) but within element B (second modal) only destroys modal behaviour for A.", ()=>{
 	const modalA = document.getElementById("test2");
 	const modalB = document.getElementById("test3");
 	const out = modalB;
 	let callCountA = 0;
 	let callCountB = 0;
 	
+	sample.push(modalB, ()=>{ callCountB++ });	
 	sample.push(modalA, ()=>{ callCountA++ });
-	sample.push(modalB, ()=>{ callCountB++ });
 	
 	trigger(out, "mousedown");
 	
