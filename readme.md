@@ -71,6 +71,9 @@ Notice, just to be clear, you only need to call forcePop if you do not want to w
 
 ## Versions
 
+### 1.0.5
+- check in .push if element parameter is DOM el
+
 ### 1.0.4
 - Fixed: Reversed propagation (issue #1)
 - Changed: Simplified live demo.
