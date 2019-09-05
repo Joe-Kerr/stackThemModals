@@ -63,6 +63,15 @@ afterEach(()=>{
 	document.removeEventListener.resetHistory();
 });
 
+test("push throws if element parameter is not an HTML element.", ()=>{
+	const modal = document.getElementById("test3");
+	assert.doesNotThrow(()=>{ sample.push(modal, ()=>{}); });
+	
+	const bollocks = {id: "trustMeImAHTMLElement", className: "noReally!"};
+	assert.throws(()=>{ sample.push(bollocks, ()=>{}) }, {message: /is not an HTML element/});
+	
+	sample.forcePop(true);
+});
 
 test("forcePop removes modal listener if no elements left.", ()=>{
 	const modal = document.getElementById("test3");

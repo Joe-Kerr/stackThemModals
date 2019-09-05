@@ -1,6 +1,7 @@
 
 
   stackThemModals/index.js
+    √ push throws if element parameter is not an HTML element.
     √ forcePop removes modal listener if no elements left.
     √ forcePop removes last modal element on stack by default.
     √ forcePop clears stack if parameter true.
@@ -12,5 +13,5 @@
     √ Clicking outside element A (first modal) but within element B (second modal) only destroys modal behaviour for A.
 
 
-  9 passing (120ms)
+  10 passing (178ms)
 

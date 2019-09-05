@@ -19,6 +19,20 @@ module.exports = function(env, argv) {
 		process.exit(1);
 	}
 
+/////
+const worker = {
+			entry: path.join(__dirname, project),
+			target: "webworker",
+			output: {
+				path: path.join(__dirname, projectRoot, "dist"),
+				filename: projectName + ".worker.js",
+				library: projectName,
+				libraryTarget: "umd"
+			},
+			mode: "production"	
+};
+////	
+	
 	function config(target) {
 		
 		const abr = {
@@ -39,5 +53,5 @@ module.exports = function(env, argv) {
 		}
 	}
 
-	return [config("umd"), config("var"), config("commonjs2")]
+	return [config("umd"), config("var"), config("commonjs2"), worker]
 }

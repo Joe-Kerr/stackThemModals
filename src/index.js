@@ -1,5 +1,13 @@
 const modalStack = [];
 
+// https://stackoverflow.com/a/384380
+function isElement(o){
+  return (
+    typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
+    o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName==="string"
+	);
+}
+
 function isClickOnOrInsideModal(modalEl, clickTarget) {
 	let node = clickTarget;
 	while(node != null) {
@@ -41,6 +49,10 @@ function cleanup() {
 }
 
 function enable(element, callback, config={}) {	
+	if(!isElement(element)) {
+		throw new Error("'element' parameter is not an HTML element.");
+	}
+	
 	const stop = (typeof config.stopPropagation === "boolean") ? config.stopPropagation : true;
 	
 	modalStack.push({element, callback, stop});
