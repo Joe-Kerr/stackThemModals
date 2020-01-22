@@ -71,6 +71,9 @@ Notice, just to be clear, you only need to call forcePop if you do not want to w
 
 ## Versions
 
+### 1.0.6
+- Changed: Mouse event passed to user callbacks
+
 ### 1.0.5
 - Changed: Added check in .push if element parameter is DOM el
 
