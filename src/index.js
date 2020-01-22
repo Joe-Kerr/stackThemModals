@@ -32,7 +32,7 @@ function modalListenerCallback(event) {
 		event.stopPropagation();
 	}
 	
-	modalStack[index].callback();
+	modalStack[index].callback(event);
 	modalStack.pop();
 	
 	if(modalStack.length === 0) {

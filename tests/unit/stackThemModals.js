@@ -211,3 +211,22 @@ test("Clicking outside element A (first modal) but within element B (second moda
 	
 	sample.forcePop(true);
 });
+
+test("User callbacks are called with click event", ()=>{
+	const modal = document.getElementById("test3");
+	const out = document.getElementById("test4");
+
+	let event1 = null;
+	let event2 = null;
+	
+	sample.push(modal, (event)=>{ event1 = event; });
+	sample.push(modal, (event)=>{ event2 = event; });
+	
+	trigger(out, "mousedown");
+	trigger(out, "mousedown");
+	
+	assert.equal(event1.type, "mousedown");
+	assert.equal(event1.constructor.name, "Event");
+	assert.equal(event2.type, "mousedown");
+	assert.equal(event2.constructor.name, "Event");
+});

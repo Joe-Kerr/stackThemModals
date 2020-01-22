@@ -11,7 +11,8 @@
     √ Clicks on children within the modal element keep the modal behaviour alive.
     √ Clicks outside multiple elements destroy modal behaviour of all of them by default.
     √ Clicking outside element A (first modal) but within element B (second modal) only destroys modal behaviour for A.
+    √ User callbacks are called with click event
 
 
-  10 passing (178ms)
+  11 passing 
 
