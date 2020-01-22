@@ -72,20 +72,20 @@ Notice, just to be clear, you only need to call forcePop if you do not want to w
 ## Versions
 
 ### 1.0.5
-- check in .push if element parameter is DOM el
+- Changed: Added check in .push if element parameter is DOM el
 
 ### 1.0.4
 - Fixed: Reversed propagation (issue #1)
-- Changed: Simplified live demo.
+- Changed: Simplified live demo
 
 ### 1.0.3
-- Added: live demo with github pages
+- Changed: Added live demo with github pages
 
 ### 1.0.2
-- - Fixed: ohh, I see now: https://github.com/webpack/webpack/issues/7646
+- Fixed: ohh, I see now: https://github.com/webpack/webpack/issues/7646
 
 ### 1.0.1 
-- Public release.
+- Public release
 
 
 ## Copyright
