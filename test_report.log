@@ -12,7 +12,9 @@
     √ Clicks outside multiple elements destroy modal behaviour of all of them by default.
     √ Clicking outside element A (first modal) but within element B (second modal) only destroys modal behaviour for A.
     √ User callbacks are called with click event
+    √ Propagation is stopped by default
+    √ Propagation is not stopped if config provided
 
 
-  11 passing 
+  13 passing 
 

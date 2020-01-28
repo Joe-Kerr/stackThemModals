@@ -230,3 +230,29 @@ test("User callbacks are called with click event", ()=>{
 	assert.equal(event2.type, "mousedown");
 	assert.equal(event2.constructor.name, "Event");
 });
+
+[
+	{test: "Propagation is stopped by default", cfg: {stopPropagation: undefined}, expected: 1},
+	{test: "Propagation is not stopped if config provided", cfg: {stopPropagation: false}, expected: 0},
+].forEach((testObj)=>{
+	
+	test(testObj.test, ()=>{
+		const modal = document.getElementById("test3");
+		const backup = document.addEventListener;
+		const event = {stopPropagation: new sinon.fake()};
+		
+		document.addEventListener = (type, cb)=>{
+			cb(event);
+		}
+		
+		sample.push(modal, ()=>{}, testObj.cfg);	
+		trigger(modal, "mousedown");	
+		
+		assert.equal(event.stopPropagation.callCount, testObj.expected);
+		
+		document.addEventListener = backup;
+		document.addEventListener.resetHistory();	
+		document.removeEventListener.resetHistory();		
+	});
+	
+});
